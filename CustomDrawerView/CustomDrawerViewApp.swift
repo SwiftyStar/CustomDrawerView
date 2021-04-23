@@ -11,7 +11,7 @@ import SwiftUI
 struct CustomDrawerViewApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            DrawerExampleScreen()
         }
     }
 }

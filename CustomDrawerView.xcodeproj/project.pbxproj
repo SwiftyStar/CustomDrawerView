@@ -8,18 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		A513FAE026324A1400F0F00A /* CustomDrawerViewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513FADF26324A1400F0F00A /* CustomDrawerViewApp.swift */; };
-		A513FAE226324A1400F0F00A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513FAE126324A1400F0F00A /* ContentView.swift */; };
+		A513FAE226324A1400F0F00A /* DrawerExampleScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513FAE126324A1400F0F00A /* DrawerExampleScreen.swift */; };
 		A513FAE426324A1600F0F00A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A513FAE326324A1600F0F00A /* Assets.xcassets */; };
 		A513FAE726324A1600F0F00A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A513FAE626324A1600F0F00A /* Preview Assets.xcassets */; };
+		A513FAF226324A8500F0F00A /* DrawerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513FAF126324A8500F0F00A /* DrawerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A513FADC26324A1400F0F00A /* CustomDrawerView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomDrawerView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A513FADF26324A1400F0F00A /* CustomDrawerViewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDrawerViewApp.swift; sourceTree = "<group>"; };
-		A513FAE126324A1400F0F00A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A513FAE126324A1400F0F00A /* DrawerExampleScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerExampleScreen.swift; sourceTree = "<group>"; };
 		A513FAE326324A1600F0F00A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A513FAE626324A1600F0F00A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A513FAE826324A1600F0F00A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A513FAF126324A8500F0F00A /* DrawerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,8 +54,9 @@
 		A513FADE26324A1400F0F00A /* CustomDrawerView */ = {
 			isa = PBXGroup;
 			children = (
+				A513FAEF26324A4A00F0F00A /* Screens */,
+				A513FAF026324A5300F0F00A /* Views */,
 				A513FADF26324A1400F0F00A /* CustomDrawerViewApp.swift */,
-				A513FAE126324A1400F0F00A /* ContentView.swift */,
 				A513FAE326324A1600F0F00A /* Assets.xcassets */,
 				A513FAE826324A1600F0F00A /* Info.plist */,
 				A513FAE526324A1600F0F00A /* Preview Content */,
@@ -67,6 +70,22 @@
 				A513FAE626324A1600F0F00A /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A513FAEF26324A4A00F0F00A /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				A513FAE126324A1400F0F00A /* DrawerExampleScreen.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		A513FAF026324A5300F0F00A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A513FAF126324A8500F0F00A /* DrawerView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +157,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A513FAE226324A1400F0F00A /* ContentView.swift in Sources */,
+				A513FAF226324A8500F0F00A /* DrawerView.swift in Sources */,
+				A513FAE226324A1400F0F00A /* DrawerExampleScreen.swift in Sources */,
 				A513FAE026324A1400F0F00A /* CustomDrawerViewApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
