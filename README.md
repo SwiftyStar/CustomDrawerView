@@ -1,6 +1,8 @@
 # CustomDrawerView
 SwiftUI drawer modal that opens from the bottom of the screen. Perfect for providing user's additional information without navigating to an entire screen.
 
+The user has a few ways to close the drawer: Tapping the dark background, dragging the drawer closed, tapping the close button, or any method provided by you.
+
 Very flexible and should accommodate any content.
 
 # Example: 
