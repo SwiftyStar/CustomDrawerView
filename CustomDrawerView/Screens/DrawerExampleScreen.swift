@@ -13,72 +13,59 @@ struct DrawerExampleScreen: View {
     @State private var drawerOpens = 0
     @State private var drawerCloses = 0
     
-    private var drawerOpenText: some View {
-        HStack {
-            Spacer()
-            Text("Opened drawer \(self.drawerOpens) times")
-            Spacer()
-        }
-    }
-    
-    private var drawerCloseText: some View {
-        HStack {
-            Spacer()
-            Text("Closed drawer \(self.drawerCloses) times")
-            Spacer()
-        }
-    }
-    
-    private var openDrawerButton: some View {
-        HStack {
-            Spacer()
-            Button("Open Drawer", action: self.openDrawer)
-            Spacer()
-        }
-    }
-    
     private var content: some View {
-        VStack {
+        HStack {
             Spacer()
             
-            self.drawerOpenText
-            Spacer()
-                .frame(height: 4)
+            VStack {
+                Spacer()
+                
+                Text("Opened drawer \(self.drawerOpens) times")
+                Spacer()
+                    .frame(height: 4)
+                
+                Text("Closed drawer \(self.drawerCloses) times")
+                Spacer()
+                    .frame(height: 4)
+                
+                Button("Open Drawer", action: self.openDrawer)
+                Spacer()
+            }
             
-            self.drawerCloseText
             Spacer()
-                .frame(height: 4)
+        }
+    }
+    
+    private var drawerContent: some View {
+        HStack {
+            Spacer()
+                .frame(width: 16)
             
-            self.openDrawerButton
+            VStack {
+                Spacer()
+                    .frame(height: 24)
+                
+                Text("This is time number \(self.drawerOpens) opening this Drawer")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Spacer()
+                    .frame(height: 16)
+                
+                Text("Tap here to close the Drawer. This could be a continue button.")
+                    .foregroundColor(.blue)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .onTapGesture(perform: self.shouldCloseDrawer)
+                Spacer()
+                    .frame(height: 32)
+            }
+            
             Spacer()
+                .frame(width: 16)
         }
     }
     
     private var drawer: some View {
         DrawerView(isOpen: self.$drawerIsOpen) {
-            HStack {
-                Spacer()
-                    .frame(width: 16)
-                
-                VStack {
-                    Spacer()
-                        .frame(height: 24)
-                    
-                    Text("This is time number \(self.drawerOpens) opening this Drawer")
-                    Spacer()
-                        .frame(height: 16)
-                    
-                    Text("Tap here to close the drawer. This could be a continue button.")
-                        .onTapGesture(perform: self.shouldCloseDrawer)
-                    Spacer()
-                        .frame(height: 16)
-                }
-                
-                Spacer()
-                    .frame(width: 16)
-            }
-            
-            
+            self.drawerContent
         }
         .shouldClose(self.$drawerShouldClose)
         .hasCloseButton(true)

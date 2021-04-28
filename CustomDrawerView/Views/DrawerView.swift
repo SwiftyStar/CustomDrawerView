@@ -70,9 +70,8 @@ struct DrawerView<Content: View>: View {
     }
     
     private var drawerHandleContainer: some View {
-        ZStack {
+        ZStack(alignment: .top) {
             self.drawerHandle
-                .layoutPriority(1000)
             
             if self.hasCloseButton {
                 self.closeButton
@@ -110,6 +109,7 @@ struct DrawerView<Content: View>: View {
                 Spacer()
                 self.drawer
             }
+            .edgesIgnoringSafeArea(.bottom)
         }
         .onChange(of: self.shouldClose, perform: self.shouldCloseChanged(_:))
     }
@@ -169,8 +169,12 @@ struct DrawerView<Content: View>: View {
     }
     
     /// Adds a Binding to determine if the drawer should close.
-    /// This is different from isOpen. IsOpen primarily tells the parent view to remove the drawer entirely. shouldClose lets the parent tell the drawer that it should animate closed
-    /// This is .constant(true) by default
+    /// This is .constant(false) by default
+    ///
+    /// This is different from isOpen.
+    ///
+    /// IsOpen primarily tells the parent view to remove the drawer entirely. shouldClose lets the parent tell the drawer that it should animate closed
+    /// 
     /// - Parameter shouldClose: Binding<Bool> that tells the drawer whether or not to animate closed
     /// - Returns: DrawerView that will close if the binding is changed to true
     func shouldClose(_ shouldClose: Binding<Bool>) -> DrawerView {
@@ -181,6 +185,7 @@ struct DrawerView<Content: View>: View {
                    onOpen: self.onOpen,
                    onClose: self.onClose)
     }
+    
     /// Determines if the drawer has a close button.
     /// This is true by default
     /// - Parameter hasButton: Bool determining if the drawer has a close button

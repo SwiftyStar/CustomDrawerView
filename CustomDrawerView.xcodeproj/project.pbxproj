@@ -54,9 +54,9 @@
 		A513FADE26324A1400F0F00A /* CustomDrawerView */ = {
 			isa = PBXGroup;
 			children = (
+				A513FADF26324A1400F0F00A /* CustomDrawerViewApp.swift */,
 				A513FAEF26324A4A00F0F00A /* Screens */,
 				A513FAF026324A5300F0F00A /* Views */,
-				A513FADF26324A1400F0F00A /* CustomDrawerViewApp.swift */,
 				A513FAE326324A1600F0F00A /* Assets.xcassets */,
 				A513FAE826324A1600F0F00A /* Info.plist */,
 				A513FAE526324A1600F0F00A /* Preview Content */,
