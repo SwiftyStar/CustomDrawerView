@@ -11,10 +11,10 @@ struct DrawerView<Content: View>: View {
     private let content: () -> Content
     @Binding private var isOpen: Bool
     
-    @Binding private var shouldClose: Bool
-    private let hasCloseButton: Bool
-    private let onOpen: (() -> Void)?
-    private let onClose: (() -> Void)?
+    @Binding var shouldClose: Bool
+    private var hasCloseButton: Bool = false
+    private var onOpen: (() -> Void)?
+    private var onClose: (() -> Void)?
     
     @State private var verticalOffset = UIScreen.main.bounds.height
     
@@ -29,15 +29,6 @@ struct DrawerView<Content: View>: View {
         self.hasCloseButton = true
         self.onOpen = nil
         self.onClose = nil
-    }
-    
-    private init(isOpen: Binding<Bool>, @ViewBuilder content: @escaping () -> Content, shouldClose: Binding<Bool>, hasCloseButton: Bool, onOpen: (() -> Void)?, onClose: (() -> Void)?) {
-        self._isOpen = isOpen
-        self.content = content
-        self._shouldClose = shouldClose
-        self.hasCloseButton = hasCloseButton
-        self.onOpen = onOpen
-        self.onClose = onClose
     }
     
     private var closeButton: some View {
@@ -167,23 +158,22 @@ struct DrawerView<Content: View>: View {
         
         self.closeDrawer()
     }
-    
+}
+
+extension DrawerView {
     /// Adds a Binding to determine if the drawer should close.
     /// This is .constant(false) by default
     ///
     /// This is different from isOpen.
     ///
     /// IsOpen primarily tells the parent view to remove the drawer entirely. shouldClose lets the parent tell the drawer that it should animate closed
-    /// 
+    ///
     /// - Parameter shouldClose: Binding<Bool> that tells the drawer whether or not to animate closed
     /// - Returns: DrawerView that will close if the binding is changed to true
     func shouldClose(_ shouldClose: Binding<Bool>) -> DrawerView {
-        DrawerView(isOpen: self.$isOpen,
-                   content: self.content,
-                   shouldClose: shouldClose,
-                   hasCloseButton: self.hasCloseButton,
-                   onOpen: self.onOpen,
-                   onClose: self.onClose)
+        var mutableSelf = self
+        mutableSelf._shouldClose = shouldClose
+        return mutableSelf
     }
     
     /// Determines if the drawer has a close button.
@@ -191,12 +181,9 @@ struct DrawerView<Content: View>: View {
     /// - Parameter hasButton: Bool determining if the drawer has a close button
     /// - Returns: DrawerView with or without a close button
     func hasCloseButton(_ hasButton: Bool) -> DrawerView {
-        DrawerView(isOpen: self.$isOpen,
-                   content: self.content,
-                   shouldClose: self.$shouldClose,
-                   hasCloseButton: hasButton,
-                   onOpen: self.onOpen,
-                   onClose: self.onClose)
+        var mutableSelf = self
+        mutableSelf.hasCloseButton = hasButton
+        return mutableSelf
     }
     
     /// Provides an action that occurs when the drawer is finished opening.
@@ -204,12 +191,9 @@ struct DrawerView<Content: View>: View {
     /// - Parameter action: (() -> Void)? action to take when the drawer is finished opening
     /// - Returns: DrawerView with or without an on open action
     func onOpen(_ action: (() -> Void)?) -> DrawerView {
-        DrawerView(isOpen: self.$isOpen,
-                   content: self.content,
-                   shouldClose: self.$shouldClose,
-                   hasCloseButton: self.hasCloseButton,
-                   onOpen: action,
-                   onClose: self.onClose)
+        var mutableSelf = self
+        mutableSelf.onOpen = action
+        return mutableSelf
     }
     
     /// Provides an action that occurs when the drawer is finished closing.
@@ -217,11 +201,9 @@ struct DrawerView<Content: View>: View {
     /// - Parameter action: (() -> Void)? action to take when the drawer is finished closing
     /// - Returns: DrawerView with or without an on close action
     func onClose(_ action: (() -> Void)?) -> DrawerView {
-        DrawerView(isOpen: self.$isOpen,
-                   content: self.content,
-                   shouldClose: self.$shouldClose,
-                   hasCloseButton: self.hasCloseButton,
-                   onOpen: self.onOpen,
-                   onClose: action)
+        var mutableSelf = self
+        mutableSelf.onClose = action
+        return mutableSelf
     }
 }
+
